@@ -57,7 +57,28 @@ for mood, links in playlists.items():
             continue
         features = get_track_features(ids, spotify)
         features['id'] = ids
+        
+        for i in range(0,1500):
+            if mood == 'Energetic':
+                mood = 0
+
+        for i in range(0,1500):
+            if mood == 'Happy':
+                mood = 1
+        
+        for i in range(0,1500):
+            if mood == 'Relaxing':
+                mood = 2
+
+        for i in range(0,1500):
+            if mood == 'Dark':
+                mood = 3
+        
+        for i in range(0,1500):
+            if mood == 'Aggressive':
+                mood = 4
+        
         features['mood'] = mood
         tracks = tracks.append(features)
 
-tracks.to_csv('tracks3.csv')
+tracks.to_csv('tracks7.csv')
