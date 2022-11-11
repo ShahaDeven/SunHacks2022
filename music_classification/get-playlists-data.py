@@ -61,20 +61,12 @@ for mood, links in playlists.items():
         for i in range(0,1500):
             if mood == 'Energetic':
                 mood = 0
-
-        for i in range(0,1500):
             if mood == 'Happy':
                 mood = 1
-        
-        for i in range(0,1500):
             if mood == 'Relaxing':
                 mood = 2
-
-        for i in range(0,1500):
             if mood == 'Dark':
                 mood = 3
-        
-        for i in range(0,1500):
             if mood == 'Aggressive':
                 mood = 4
         
