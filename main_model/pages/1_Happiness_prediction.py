@@ -1,9 +1,17 @@
+# evaluate an ridge regression model on the dataset
+from numpy import mean
+from numpy import std
+from numpy import absolute
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn
 import tensorflow as tf
 import pandas as pd
 import streamlit as st
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import RepeatedKFold
+from sklearn.linear_model import Ridge
+
 
 
 
@@ -13,28 +21,30 @@ df = pd.read_csv(r"C:\Users\DevenShah\Desktop\test\SunHacks2022\main_model\2015_
 
 df.head()
 
-new_df = df.drop(['Country','Region','Standard Error','Dystopia Residual'],axis = 'columns')
+new_df = df.drop(['Standard Error','Dystopia Residual'],axis = 'columns')
 
 new_df.head()
 
 x = new_df.iloc[:,3:]
-y = new_df.iloc[:,1]
-print(x)
+y = new_df.iloc[:,2]
+print(y)
+
 
 from sklearn.ensemble import RandomForestRegressor
 regressor = RandomForestRegressor(n_estimators = 10, random_state = 0)
 regressor.fit(x, y)
 
-model1 = regressor.predict([[1.37561,1.40223,0.93284,0.63376,0.90444,0.99005,0]])
-print(model1)
+gdb = st.number_input("Enter GDP per capita:",min_value=0.0,max_value=5.0,step=1e-6,format="%.5f")
+hlth = st.number_input("Enter Health (Life Expectancy):",min_value=0.0,max_value=5.0,step=1e-6,format="%.5f")
+fdom = st.number_input("Enter Freedom:",min_value=0.0,max_value=5.0,step=1e-6,format="%.5f")
+ss = st.number_input("Enter Social Support:",min_value=0.0,max_value=5.0,step=1e-6,format="%.5f")
+cp = st.number_input("Enter Corruption Perception:",min_value=0.0,max_value=5.0,step=1e-6,format="%.5f")
+gn = st.number_input("Enter Generosity:",min_value=0.0,max_value=5.0,step=1e-6,format="%.5f")
+music1 = st.number_input("Enter Music value:",min_value=0.0,max_value=5.0,step=1e-6,format="%.5f")
+model1 = regressor.predict([[gdb,hlth,fdom,ss,cp,gn,music1]])
+st.button("Predict")
 #list_data = [model1]
 st.write("Happiness Rank is",model1)
-gdb = 1.37561
-hlth = 1.40223
-fdom = 0.93284
-ss = 0.63376
-cp = 0.90444
-gn = 0.99005
 
 standard_dev_gdp = new_df['Economy (GDP per Capita)'].mean()*100
 std_dev_health = new_df['Health (Life Expectancy)'].mean()*100
@@ -46,12 +56,12 @@ std_generosity = new_df['Generosity'].mean()*100
 import pandas as pd
 df=pd.read_csv(r'C:\Users\DevenShah\Desktop\test\SunHacks2022\main_model\happyindex.csv')
 df.rename( columns={'Unnamed: 0':'Attributes'}, inplace=True )
-gdb = 1.37561
-hlth = 1.40223
-fdom = 0.93284
-ss = 0.63376
-cp = 0.90444
-gn = 0.99005
+#gdb = st.number_input("Enter GDP per capita:")
+#hlth = st.number_input("Enter Health (Life Expectancy):")
+#fdom = st.number_input("Enter Freedom:")
+#ss = st.number_input("Enter Social Support:")
+#cp = st.number_input("Enter Corruption Perception:")
+#gn = st.number_input("Enter Generosity:")
 arr_gdb=[]
 arr_hlth=[]
 arr_fdom=[]
