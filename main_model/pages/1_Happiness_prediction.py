@@ -27,7 +27,6 @@ new_df.head()
 
 x = new_df.iloc[:,3:]
 y = new_df.iloc[:,2]
-print(y)
 
 
 from sklearn.ensemble import RandomForestRegressor
@@ -46,12 +45,13 @@ st.button("Predict")
 #list_data = [model1]
 st.write("Happiness Rank is",model1)
 
-standard_dev_gdp = new_df['Economy (GDP per Capita)'].mean()*100
-std_dev_health = new_df['Health (Life Expectancy)'].mean()*100
-std_freedom = new_df['Freedom'].mean()*100
-std_family = new_df['Family'].mean()*100
-std_gov_corruption = new_df['Trust (Government Corruption)'].mean()*100
-std_generosity = new_df['Generosity'].mean()*100
+standard_dev_gdp = new_df['Economy (GDP per Capita)'].mean()
+std_dev_health = new_df['Health (Life Expectancy)'].mean()
+std_freedom = new_df['Freedom'].mean()
+std_family = new_df['Family'].mean()
+std_gov_corruption = new_df['Trust (Government Corruption)'].mean()
+std_generosity = new_df['Generosity'].mean()
+st.write("Standard Deviation of GDP per capita is",standard_dev_gdp)
 
 import pandas as pd
 df=pd.read_csv(r'C:\Users\DevenShah\Desktop\test\SunHacks2022\main_model\happyindex.csv')
