@@ -39,19 +39,18 @@ fdom = st.number_input("Enter Freedom:",min_value=0.0,max_value=5.0,step=1e-6,fo
 ss = st.number_input("Enter Social Support:",min_value=0.0,max_value=5.0,step=1e-6,format="%.5f")
 cp = st.number_input("Enter Corruption Perception:",min_value=0.0,max_value=5.0,step=1e-6,format="%.5f")
 gn = st.number_input("Enter Generosity:",min_value=0.0,max_value=5.0,step=1e-6,format="%.5f")
-music1 = st.number_input("Enter Music value:",min_value=0.0,max_value=5.0,step=1e-6,format="%.5f")
+music1 = st.number_input("Enter Music value(0 - Energetic,1 - Relaxing,2 - Happy,3 - Sad,4 - Aggressive):",min_value=0.0,max_value=5.0,step=1e-6,format="%.5f")
 model1 = regressor.predict([[gdb,hlth,fdom,ss,cp,gn,music1]])
 st.button("Predict")
 #list_data = [model1]
 st.write("Happiness Rank is",model1)
 
-standard_dev_gdp = new_df['Economy (GDP per Capita)'].mean()
-std_dev_health = new_df['Health (Life Expectancy)'].mean()
-std_freedom = new_df['Freedom'].mean()
-std_family = new_df['Family'].mean()
-std_gov_corruption = new_df['Trust (Government Corruption)'].mean()
-std_generosity = new_df['Generosity'].mean()
-st.write("Standard Deviation of GDP per capita is",standard_dev_gdp)
+standard_dev_gdp = new_df['Economy (GDP per Capita)'].mean()*100
+std_dev_health = new_df['Health (Life Expectancy)'].mean()*100
+std_freedom = new_df['Freedom'].mean()*100
+std_family = new_df['Family'].mean()*100
+std_gov_corruption = new_df['Trust (Government Corruption)'].mean()*100
+std_generosity = new_df['Generosity'].mean()*100
 
 import pandas as pd
 df=pd.read_csv(r'C:\Users\DevenShah\Desktop\test\SunHacks2022\main_model\happyindex.csv')
